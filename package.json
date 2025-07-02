@@ -16,5 +16,9 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
+  },
+  "mosaia": {
+    "toolId": "rugcheck",
+    "manifestPath": "./mosaia.tool.json"
   }
 } 
