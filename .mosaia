@@ -1,0 +1,12 @@
+{
+  "TOOL_DISPLAY_NAME": "RugCheck Token Analyzer",
+  "SHORT_TOOL_DESCRIPTION": "A tool to analyze and verify tokens using RugCheck API",
+  "LONG_TOOL_DESCRIPTION": "This tool integrates with RugCheck API to provide token verification and detailed reports. It can check if tokens are verified and retrieve comprehensive reports about token safety and characteristics.",
+  "EXAMPLE_PARAM_ACTION": "The action to perform: 'get_verified_stats' or 'get_token_report'",
+  "EXAMPLE_PARAM_ACTION_DESCRIPTION": "Specify which API endpoint to call - either get verified token stats or get a specific token report",
+  "EXAMPLE_PARAM_TOKEN_ID": "The token ID to get report for (only required for get_token_report action)",
+  "EXAMPLE_PARAM_TOKEN_ID_DESCRIPTION": "The unique identifier of the token to analyze",
+  "envVars": {
+    "RUGCHECK_API_KEY": "Your RugCheck API key"
+  }
+} 
