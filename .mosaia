@@ -1,12 +1,150 @@
 {
-  "TOOL_DISPLAY_NAME": "RugCheck Token Analyzer",
-  "SHORT_TOOL_DESCRIPTION": "A tool to analyze and verify tokens using RugCheck API",
-  "LONG_TOOL_DESCRIPTION": "This tool integrates with RugCheck API to provide token verification and detailed reports. It can check if tokens are verified and retrieve comprehensive reports about token safety and characteristics.",
-  "EXAMPLE_PARAM_ACTION": "The action to perform: 'get_verified_stats' or 'get_token_report'",
-  "EXAMPLE_PARAM_ACTION_DESCRIPTION": "Specify which API endpoint to call - either get verified token stats or get a specific token report",
-  "EXAMPLE_PARAM_TOKEN_ID": "The token ID to get report for (only required for get_token_report action)",
-  "EXAMPLE_PARAM_TOKEN_ID_DESCRIPTION": "The unique identifier of the token to analyze",
-  "envVars": {
-    "RUGCHECK_API_KEY": "Your RugCheck API key"
+  "name": "rugcheck",
+  "version": "1.0.0",
+  "description": "A tool for interacting with RugCheck API to analyze Solana tokens and domains",
+  "type": "api",
+  "author": {
+    "name": "Mosaia Community",
+    "email": "support@mosaia.io"
+  },
+  "endpoints": {
+    "base": "/execute",
+    "actions": {
+      "get_verified_stats": {
+        "description": "Get list of verified tokens",
+        "method": "POST",
+        "parameters": {}
+      },
+      "get_new_tokens": {
+        "description": "Get list of recently detected tokens",
+        "method": "POST",
+        "parameters": {}
+      },
+      "get_trending_tokens": {
+        "description": "Get most voted tokens in last 24h",
+        "method": "POST",
+        "parameters": {}
+      },
+      "get_recent_tokens": {
+        "description": "Get most viewed tokens in last 24h",
+        "method": "POST",
+        "parameters": {}
+      },
+      "get_token_summary": {
+        "description": "Get token report summary",
+        "method": "POST",
+        "parameters": {
+          "token_id": {
+            "type": "string",
+            "required": true,
+            "description": "Token ID to get summary for"
+          }
+        }
+      },
+      "get_token_votes": {
+        "description": "Get token voting statistics",
+        "method": "POST",
+        "parameters": {
+          "token_id": {
+            "type": "string",
+            "required": true,
+            "description": "Token ID to get votes for"
+          }
+        }
+      },
+      "get_domains": {
+        "description": "Get registered .token domains (supports pagination)",
+        "method": "POST",
+        "parameters": {
+          "params": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "page": {
+                "type": "number",
+                "description": "Page number for pagination"
+              },
+              "limit": {
+                "type": "number",
+                "description": "Number of items per page"
+              },
+              "verified": {
+                "type": "boolean",
+                "description": "Filter for verified domains only"
+              }
+            }
+          }
+        }
+      },
+      "get_domains_csv": {
+        "description": "Get registered domains in CSV format",
+        "method": "POST",
+        "parameters": {
+          "params": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "verified": {
+                "type": "boolean",
+                "description": "Filter for verified domains only"
+              }
+            }
+          }
+        }
+      },
+      "lookup_domain": {
+        "description": "Get domain address by name",
+        "method": "POST",
+        "parameters": {
+          "token_id": {
+            "type": "string",
+            "required": true,
+            "description": "Domain name to look up"
+          }
+        }
+      },
+      "get_domain_records": {
+        "description": "Get domain records by name",
+        "method": "POST",
+        "parameters": {
+          "token_id": {
+            "type": "string",
+            "required": true,
+            "description": "Domain name to get records for"
+          }
+        }
+      },
+      "get_leaderboard": {
+        "description": "Get user leaderboard rankings (supports pagination)",
+        "method": "POST",
+        "parameters": {
+          "params": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "page": {
+                "type": "number",
+                "description": "Page number for pagination"
+              },
+              "limit": {
+                "type": "number",
+                "description": "Number of items per page"
+              }
+            }
+          }
+        }
+      },
+      "check_maintenance": {
+        "description": "Check if the service is up and running",
+        "method": "POST",
+        "parameters": {}
+      }
+    }
+  },
+  "authentication": {
+    "type": "none"
+  },
+  "requirements": {
+    "node": ">=14.0.0"
   }
 } 
